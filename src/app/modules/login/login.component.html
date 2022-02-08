@@ -1,0 +1,42 @@
+<body>
+  <div class="form">
+    <form class="login-form" (ngSubmit)="login(loginUserFormGroup.value)" [formGroup]="loginUserFormGroup" novalidate>
+      <mat-card class="mat-elevation-z0">
+        <div class="full-width">
+          <h1>Sistema VetApp</h1>
+        </div>
+
+        <div class="full-width">
+          <h3>Iniciar Sesión</h3>
+        </div>
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="outline">
+                <input matInput placeholder="Correo" formControlName="email" />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="outline" style="position: relative">
+                <input [type]="show ? 'text' : 'password'" matInput placeholder="Contraseña" formControlName="password"
+                  style="width: 95%" />
+                <mat-icon style="float: right; margin-top: -1%" class="passButton" (click)="password()">
+                  {{ show ? "visibility_off" : "visibility" }}</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button type="submit" class="loginButton">
+            Iniciar Sesión
+          </button>
+        </mat-card-actions>
+
+        <a mat-button routerLink="/inicio"> Inicio</a>
+
+      </mat-card>
+    </form>
+  </div>
+</body>

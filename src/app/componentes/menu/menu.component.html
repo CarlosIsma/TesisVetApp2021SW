@@ -1,0 +1,36 @@
+  <div class="menu-sesion">
+    <ul>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <small style="color:black">{{ username }}</small> &nbsp;&nbsp;
+          <mat-icon>person_outline</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            Cerrar Sesión &nbsp;&nbsp;
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+  <div id="headerContent">
+    <h1>Sistema VetApp</h1>
+</div>
+  
+<mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-tile
+    ><a routerLink="/consolaV/veterinarias"
+      ><img
+        src="../../../assets/hospitalTxt.png"
+        alt="veterinarias"
+    /></a>
+  </mat-grid-tile>
+  <mat-grid-tile
+    ><a routerLink="/consolaV/usuarios"
+      ><img
+      src="../../../assets/UserTxt.png"
+        alt="veterinarias"
+    /></a>
+  </mat-grid-tile>
+</mat-grid-list>

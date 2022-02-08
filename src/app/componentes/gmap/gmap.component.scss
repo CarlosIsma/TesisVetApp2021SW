@@ -1,0 +1,22 @@
+#map {
+  height: 82%;
+  width: 100%;
+}
+
+button {
+  background-color: #28384c;
+  color: white;
+}
+
+.buttonsContainer {
+  padding-top: 0;
+  justify-content: center;
+}
+
+.mapDialogButton {
+  width: fit-content;
+  height: 53px;
+  position: relative;
+  top: -10px;
+  margin-left: 7px;
+}

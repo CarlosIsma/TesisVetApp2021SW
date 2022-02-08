@@ -1,0 +1,18 @@
+<mat-toolbar>
+    <div class="menu-sesion">
+      <ul>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <small style="color: #ffffff">{{ username }}</small> &nbsp;&nbsp;
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+              Cerrar Sesión &nbsp;&nbsp;
+              <mat-icon>exit_to_app</mat-icon>
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+</mat-toolbar>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "veterinarias-1c7dc": {
+      "hosting": {
+        "consolaV": [
+          "veterinarias-1c7dc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "veterinarias-1c7dc"
+  }
+}

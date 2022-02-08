@@ -1,0 +1,42 @@
+<div mat-dialog-content>
+  <mat-grid-list cols="2" rowHeight="8px">
+    <mat-grid-tile colspan="2" rowspan="8">
+      <mat-form-field appearance="outline" style="width: 100%">
+        <input
+          list="directionList"
+          matInput
+          [(ngModel)]="direccion"
+          (ngModelChange)="searchChanged($event)"
+          (change)="getCoords($event)"
+          placeholder="Dirección"
+        />
+        <datalist id="directionList">
+          <option
+            [value]="result.description"
+            *ngFor="let result of searchResults"
+          ></option>
+        </datalist>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        class="mapDialogButton"
+        (click)="setMarker()"
+      >
+        <mat-icon>location_on</mat-icon>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div #mapContainer id="map"></div>
+<div mat-dialog-actions class="buttonsContainer">
+  <button mat-raised-button (click)="onAcceptClick()">Aceptar</button>
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="reset()"
+    style="margin-left: 5px"
+  >
+    Cancelar
+  </button>
+</div>

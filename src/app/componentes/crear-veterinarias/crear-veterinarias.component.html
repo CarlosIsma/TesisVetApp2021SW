@@ -1,0 +1,196 @@
+<form class="veterinariasForm" ngNativeValidate [formGroup]="nuevaVeterinariaForm" novalidate
+  (ngSubmit)="nuevaVeterinariaForm.valid && comprobarHorarioVeterinaria()">
+  <mat-card class="mat-elevation-z0 veterinariasContainer">
+    <mat-card-header>
+      <mat-card-title>Nueva Clínica Veterinaria</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese el Nombre</mat-label>
+            <input matInput placeholder="Ej: Veterinaria gotitas del saber" formControlName="nombre" />
+            <mat-error *ngIf="
+                nuevaVeterinariaForm.controls['nombre'].hasError('required')
+              ">
+              El nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese la Dirección</mat-label>
+            <input matInput placeholder="Ej: Guamaní" formControlName="direccion" />
+            <mat-error *ngIf="
+                nuevaVeterinariaForm.controls['direccion'].hasError('required')
+              ">
+              La dirección es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese una referencia</mat-label>
+            <input matInput placeholder="Ej: Cerca del terminal sur del ecovía" formControlName="referencia" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Seleccione el sector en el que se encuentra ubicada la Clínica
+              Veterinaria</mat-label>
+            <mat-select formControlName="sector">
+              <mat-option value="sur">Sur</mat-option>
+              <mat-option value="centro">Centro</mat-option>
+              <mat-option value="norte">Norte</mat-option>
+            </mat-select>
+            <mat-error *ngIf="
+                nuevaVeterinariaForm.controls['sector'].hasError('required')
+              ">
+              Debe seleccionar una opción
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Seleccione una forma de pago</mat-label>
+            <mat-select formControlName="formaPago">
+              <mat-option value="tarjetaCredito">Tarjeta de Crédito</mat-option>
+              <mat-option value="efectivo">Efectivo</mat-option>
+              <mat-option value="efectivo">Tarjeta de Crédito y Efectivo</mat-option>
+            </mat-select>
+            <mat-error *ngIf="
+                nuevaVeterinariaForm.controls['formaPago'].hasError('required')
+              ">
+              Debe seleccionar una opción
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese la descripción del servicio ofrecido</mat-label>
+            <input matInput placeholder="Ej: Describa el servicio que ofrece" formControlName="servicios" />
+            <mat-error *ngIf="
+                nuevaVeterinariaForm.controls['servicios'].hasError('required')
+              ">
+              El servicio es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Seleccione la hora de apertura</mat-label>
+            <input matInput formControlName="horaApertura" type="time" />
+            <mat-error *ngIf="
+                nuevaVeterinariaForm.controls['horaApertura'].hasError(
+                  'required'
+                )
+              ">
+              La hora de apertura es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Selecciona la hora de cierre</mat-label>
+            <input matInput formControlName="horaCierre" type="time" />
+            <mat-error *ngIf="
+                nuevaVeterinariaForm.controls['horaCierre'].hasError('required')
+              ">
+              La hora de cierre es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!--<mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese la latitud</mat-label>
+            <input
+              type="number"
+              matInput
+              readonly="readonly"
+              formControlName="latitud"
+            />
+            <mat-error
+              *ngIf="
+                nuevaVeterinariaForm.controls['latitud'].hasError('required')
+              "
+            >
+              La coordenada de latitud es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field style="width: 92%" appearance="outline">
+            <mat-label>Ingrese la longitud</mat-label>
+            <input
+              type="number"
+              matInput
+              readonly="readonly"
+              formControlName="longitud"
+            />
+            <mat-error
+              *ngIf="
+                nuevaVeterinariaForm.controls['longitud'].hasError('required')
+              "
+            >
+              La coordenada de longitud es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>-->
+          <mat-label>Seleccione la Ubicación en el Ícono:</mat-label>
+          <mat-icon color="primary" (click)="getCoordenadas(); $event.preventDefault()" style="cursor: pointer">
+            location_on</mat-icon>
+        </div>
+      </div>
+
+      <div class="row" style="text-align: center">
+        <mat-label>Seleccione la Imágen de la Clínica Veterinaria:</mat-label>
+        <br>
+        <div class="col">
+          <input type="file" (change)="showPreview($event)" accept="image/*" />
+          <mat-error *ngIf="errorIMG">
+            Seleccione una imágen de la veterinaria
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="row" style="text-align: center" *ngIf="url !== ''">
+        <div class="col">
+          <img [src]="url" />
+        </div>
+      </div>
+
+      <div class="row" style="text-align: center">
+        <mat-label>Seleccione el PDF del RUC de la Clínica Veterinaria:</mat-label>
+        <br>
+        <div class="col">
+          <input type="file" (change)="seleccionarPDf($event)" accept="application/pdf" />
+          <mat-error *ngIf="errorPDF">
+            Seleccione un archivo del RUC en formato PDF
+          </mat-error>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center">
+      <button mat-raised-button type="submit">Guardar</button>
+      <button mat-raised-button color="warn" type="button" (click)="reset()">
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,138 @@
+<form
+  class="usuariosForm"
+  ngNativeValidate
+  [formGroup]="nuevoUsuarioForm"
+  novalidate
+  (ngSubmit)="nuevoUsuarioForm.valid && comprobarImagen()"
+>
+  <mat-card class="mat-elevation-z0 usuariosContainer">
+    <mat-card-header>
+      <mat-card-title>Nuevo Usuario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese el número de cédula o RUC</mat-label>
+            <input
+              matInput
+              placeholder="Ej: 1234567890"
+              formControlName="cedula"
+            />
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls['cedula'].hasError('required')"
+            >
+              Ingrese un número de cédula o RUC
+            </mat-error>
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls.cedula.errors?.minlength"
+            >
+              Ingrese 10 dígitos mínimo
+            </mat-error>
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls.cedula.errors?.maxlength"
+            >
+              Ingrese 13 números máximo
+            </mat-error>
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls['cedula'].hasError('pattern')"
+            >
+              Solo números
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese el nombre</mat-label>
+            <input matInput placeholder="Ej: Omar" formControlName="nombre" />
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls['nombre'].hasError('required')"
+            >
+              El nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese el apellido</mat-label>
+            <input
+              matInput
+              placeholder="Ej: Espin"
+              formControlName="apellido"
+            />
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls['apellido'].hasError('required')"
+            >
+              El apellido es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese el correo electrónico</mat-label>
+            <input
+              matInput
+              placeholder="Ej: usuario@example.com"
+              formControlName="correo"
+            />
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls['correo'].hasError('required')"
+            >
+              El correo es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="nuevoUsuarioForm.controls.email?.invalid">
+              Ingrese un correo <strong>válido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Seleccione el rol de usuario</mat-label>
+            <mat-select formControlName="rol">
+              <mat-option value="ciudadano">Ciudadano</mat-option>
+              <mat-option value="veterinaria">Veterinaria</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="nuevoUsuarioForm.controls['rol'].hasError('required')"
+            >
+              Debe seleccionar un rol
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" style="text-align: center">
+        <div class="col">
+          <input type="file" (change)="showPreview($event)" accept="image/*" />
+          <mat-error *ngIf="errorIMG">
+            Seleccione una imagen para el usuario
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="row" style="text-align: center" *ngIf="url !== ''">
+        <div class="col">
+          <img [src]="url" />
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center">
+      <button mat-raised-button type="submit">Guardar</button>
+      <button mat-raised-button color="warn" type="button" (click)="reset()">
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

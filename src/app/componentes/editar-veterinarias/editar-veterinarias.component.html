@@ -1,0 +1,304 @@
+<form
+  class="veterinariasForm"
+  ngNativeValidate
+  [formGroup]="editarVeterinariaForm"
+  novalidate
+  (ngSubmit)="editarVeterinariaForm.valid && comprobarMensajeComprobacion()"
+>
+  <mat-card class="mat-elevation-z0 veterinariasContainer">
+    <mat-card-header>
+      <mat-card-title>Editar Veterinaria</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese el nombre</mat-label>
+            <input
+              matInput
+              placeholder="Ej: Veterinaria gotitas del saber"
+              formControlName="nombre"
+            />
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['nombre'].hasError('required')
+              "
+            >
+              El nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese la dirección</mat-label>
+            <input
+              matInput
+              placeholder="Ej: Guamaní"
+              formControlName="dirección"
+            />
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['direccion'].hasError('required')
+              "
+            >
+              El nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese una referencia</mat-label>
+            <input
+              matInput
+              placeholder="Ej: Cerca del terminal sur del ecovía"
+              formControlName="referencia"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label
+              >Seleccione el sector en el que se encuentra ubicada la Clínica
+              Veterinaria</mat-label
+            >
+            <mat-select formControlName="sector">
+              <mat-option value="sur">Sur</mat-option>
+              <mat-option value="centro">Centro</mat-option>
+              <mat-option value="norte">Norte</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['sector'].hasError('required')
+              "
+            >
+              Debe seleccionar una opción
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Seleccione una forma de pago</mat-label>
+            <mat-select formControlName="formaPago">
+              <mat-option value="tarjetaCredito">Tarjeta de Crédito</mat-option>
+              <mat-option value="efectivo">Efectivo</mat-option>
+              <mat-option value="efectivo">Tarjeta de Crédito y Efectivo</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['formaPago'].hasError('required')
+              "
+            >
+              Debe seleccionar una opción
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese la descripción del servicio ofrecido</mat-label>
+            <input
+              matInput
+              placeholder="Ej: Describa el servicio que ofrece"
+              formControlName="servicios"
+            />
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['servicios'].hasError('required')
+              "
+            >
+              El servicio es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Seleccione estado de aprobación</mat-label>
+            <mat-select formControlName="aprobado">
+              <mat-option [value]="true">Aprobado</mat-option>
+              <mat-option [value]="false">Rechazado</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['aprobado'].hasError('required')
+              "
+            >
+              Debe seleccionar una opción
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Selecciona la hora de apertura</mat-label>
+            <input matInput formControlName="horaApertura" type="time" />
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['horaApertura'].hasError(
+                  'required'
+                )
+              "
+            >
+              La hora de apertura es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Selecciona la hora de cierre</mat-label>
+            <input matInput formControlName="horaCierre" type="time" />
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['horaCierre'].hasError(
+                  'required'
+                )
+              "
+            >
+              La hora de cierre es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ingrese la latitud</mat-label>
+            <input
+              type="number"
+              matInput
+              readonly="readonly"
+              formControlName="latitud"
+            />
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['latitud'].hasError('required')
+              "
+            >
+              La coordenada de latitud es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field style="width: 92%" appearance="outline">
+            <mat-label>Ingrese la longitud</mat-label>
+            <input
+              type="number"
+              matInput
+              readonly="readonly"
+              formControlName="longitud"
+            />
+            <mat-error
+              *ngIf="
+                editarVeterinariaForm.controls['longitud'].hasError('required')
+              "
+            >
+              La coordenada de longitud es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-icon
+            color="primary"
+            (click)="getCoordenadas(); $event.preventDefault()"
+            style="cursor: pointer"
+            >location_on</mat-icon
+          >
+        </div>
+      </div>
+
+      <!-- EDITAR MENSAJE APROBACIÓN -->
+
+      <div class="row" style="text-align: center">
+        <mat-checkbox (change)="checkMensajeAprobacion($event)"
+          >Mostrar mensaje de aprobación al usuario
+        </mat-checkbox>
+      </div>
+
+      <div class="row" *ngIf="mensajeAprobacionChecked">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <textarea
+              matInput
+              placeholder="Motivo de aceptación o rechazo de solicitud"
+              formControlName="mensajeAprobacion"
+              appearance="outline"
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- EDITAR IMAGEN DE LA VETERINARIA -->
+
+      <div class="row" style="text-align: center">
+        <mat-checkbox (change)="checkImagen($event)"
+          >Editar imagen veterinaria
+        </mat-checkbox>
+      </div>
+
+      <div class="row">
+        <ng-container *ngIf="imagenChecked; then editarimg"> </ng-container>
+        <ng-template #editarimg>
+          <div class="row" style="text-align: center">
+            <div class="col">
+              <input
+                type="file"
+                (change)="showPreview($event)"
+                accept="image/*"
+              />
+              <mat-error *ngIf="errorIMG">
+                Seleccione una imagen de la veterinaria
+              </mat-error>
+            </div>
+          </div>
+
+          <div class="row" style="text-align: center" *ngIf="url !== ''">
+            <div class="col">
+              <img [src]="url" />
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- EDITAR ARCHIVO PDF -->
+
+      <div class="row" style="text-align: center">
+        <mat-checkbox (change)="checkPDF($event)"
+          >Editar PDF - (RUC)
+        </mat-checkbox>
+      </div>
+      <div class="row">
+        <ng-container *ngIf="pdfChecked; then editarPDF"> </ng-container>
+        <ng-template #editarPDF>
+          <div class="row" style="text-align: center">
+            <div class="col">
+              <input
+                type="file"
+                (change)="seleccionarPDf($event)"
+                accept="application/pdf"
+              />
+              <mat-error *ngIf="errorPDF">
+                Seleccione un archivo del RUC en formato PDF
+              </mat-error>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center">
+      <button mat-raised-button type="submit">Actualizar</button>
+      <button mat-raised-button color="warn" type="button" (click)="reset()">
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,23 @@
+.form {
+  text-align: center;
+}
+
+.login-form {
+  width: 90%;
+  display: inline-block;
+  margin-top: 12%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.loginButton {
+  background-color: #3e8a27;
+  color: white;
+}
+
+/* Border Form Fields */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #3e8a27;
+}

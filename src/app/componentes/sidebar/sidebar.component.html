@@ -1,0 +1,34 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <img
+        src="https://i.ibb.co/MktgMWk/logo-side-bar.jpg"
+        height="70"
+        hspace="10"
+      />
+      <br />
+      <small> Versión: 1.0.0 </small>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <br />
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/metro">
+    <mat-icon>train</mat-icon>Estaciones
+  </a>
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="/metro/rutas"
+  >
+    <mat-icon>timeline</mat-icon>Rutas
+  </a>
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="/metro/noticias"
+  >
+    <mat-icon>dvr</mat-icon>Noticias
+    <span style="font-size: smaller">&nbsp;(En Desarrollo)</span>
+  </a>
+  <mat-divider></mat-divider>
+</mat-nav-list>
